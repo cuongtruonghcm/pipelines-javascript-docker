@@ -49,8 +49,6 @@ stages:
    - deployment: Deploy
      condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/pull/')))
      displayName: Deploy
-     pool:
-       vmImage: $(vmImageName)
      environment: 'cuongtruonghcmpipelinesjavascriptdocker'
      strategy:
        runOnce:
