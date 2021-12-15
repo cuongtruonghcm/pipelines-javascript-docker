@@ -57,6 +57,7 @@ stages:
              displayName: Create imagePullSecret
              inputs:
                action: createSecret
+               kubernetesServiceConnection: 'build-robot'
                secretName: $(imagePullSecret)
                dockerRegistryEndpoint: $(containerRegistry)
 
