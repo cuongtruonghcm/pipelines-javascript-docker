@@ -9,7 +9,7 @@ trigger:
 variables:
 
    # Container registry service connection established during pipeline creation
-   dockerRegistryServiceConnection: 'dcfcf908-3992-4499-9252-1648af30d467'
+   dockerRegistryServiceConnection: 'mycontainerregistry20211215'
    imageRepository: 'cuongtruonghcmpipelinesjavascriptdocker'
    containerRegistry: 'mycontainerregistry20211215'
    dockerfilePath: '**/Dockerfile'
