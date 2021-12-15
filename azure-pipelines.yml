@@ -35,6 +35,7 @@ stages:
     displayName: Build
     pool:
       vmImage: $(vmImageName)
+      demands: Limit -equals DisAbleParallel
     steps:
     - task: Docker@2
       displayName: Build and push an image to container registry
@@ -59,6 +60,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
+      demands: Limit -equals DisAbleParallel
     environment: 'cuongtruonghcmpipelinesjavascriptdocker-1696.default'
     strategy:
       runOnce:
@@ -88,6 +90,7 @@ stages:
     condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/pull/'))
     pool:
       vmImage: $(vmImageName)
+      demands: Limit -equals DisAbleParallel
 
     environment: 'cuongtruonghcmpipelinesjavascriptdocker-1696.$(k8sNamespaceForPR)'
     strategy:
