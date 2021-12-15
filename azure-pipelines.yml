@@ -9,8 +9,9 @@ trigger:
 variables:
 
    # Container registry service connection established during pipeline creation
+   dockerRegistryServiceConnection: 'dcfcf908-3992-4499-9252-1648af30d467'
    imageRepository: 'cuongtruonghcmpipelinesjavascriptdocker'
-   containerRegistry: 'mycontainerregistry20211215'
+   containerRegistry: 'mycontainerregistry20211215.azurecr.io'
    dockerfilePath: '**/Dockerfile'
    tag: '$(Build.BuildId)'
    imagePullSecret: 'mycontainerregistry202112157106fc5c-auth'
@@ -48,6 +49,8 @@ stages:
    - deployment: Deploy
      condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/pull/')))
      displayName: Deploy
+     pool:
+       vmImage: $(vmImageName)
      environment: 'cuongtruonghcmpipelinesjavascriptdocker'
      strategy:
        runOnce:
@@ -57,15 +60,13 @@ stages:
              displayName: Create imagePullSecret
              inputs:
                action: createSecret
-               kubernetesServiceConnection: 'build-robot'
                secretName: $(imagePullSecret)
-               dockerRegistryEndpoint: $(containerRegistry)
+               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
 
            - task: KubernetesManifest@0
              displayName: Deploy to Kubernetes cluster
              inputs:
                action: deploy
-               kubernetesServiceConnection: 'build-robot'
                manifests: |
                  $(Pipeline.Workspace)/manifests/deployment.yml
                  $(Pipeline.Workspace)/manifests/service.yml
