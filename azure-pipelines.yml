@@ -6,16 +6,36 @@
 trigger:
 - master
 
+variables:
+
+   # Container registry service connection established during pipeline creation
+   dockerRegistryServiceConnection: 'dcfcf908-3992-4499-9252-1648af30d467'
+   imageRepository: 'cuongtruonghcmpipelinesjavascriptdocker'
+   containerRegistry: 'mycontainerregistry20211215.azurecr.io'
+   dockerfilePath: '**/Dockerfile'
+   tag: '$(Build.BuildId)'
+   imagePullSecret: 'mycontainerregistry202112157106fc5c-auth'
+
 pool:
   name: Default
   demands:
    - agent.name -equals devops-agent  
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+ - stage: Build
+   displayName: Build stage
+   jobs:
+   - job: Build
+     displayName: Build
+     steps:
+     - task: Docker@2
+       displayName: Build and push an image to container registry
+       inputs:
+         command: buildAndPush
+         repository: $(imageRepository)
+         dockerfile: $(dockerfilePath)
+         containerRegistry: $(dockerRegistryServiceConnection)
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+
+     - publish: manifests
+       artifact: manifests
