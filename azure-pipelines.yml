@@ -9,7 +9,6 @@ trigger:
 variables:
 
    # Container registry service connection established during pipeline creation
-   dockerRegistryServiceConnection: 'dcfcf908-3992-4499-9252-1648af30d467'
    imageRepository: 'cuongtruonghcmpipelinesjavascriptdocker'
    containerRegistry: 'mycontainerregistry20211215.azurecr.io'
    dockerfilePath: '**/Dockerfile'
@@ -34,7 +33,7 @@ stages:
          command: buildAndPush
          repository: $(imageRepository)
          dockerfile: $(dockerfilePath)
-         containerRegistry: $(dockerRegistryServiceConnection)
+         containerRegistry: $(containerRegistry)
 
 
      - publish: manifests
