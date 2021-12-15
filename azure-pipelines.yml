@@ -38,8 +38,8 @@ stages:
          containerRegistry: $(containerRegistry)
 
 
-     - publish: manifests
-       artifact: manifests
+    #  - publish: manifests
+    #    artifact: manifests
 
  - stage: Deploy
    displayName: Deploy stage
