@@ -54,13 +54,13 @@ stages:
        runOnce:
          deploy:
            steps:
-           - task: KubernetesManifest@0
-             displayName: Create imagePullSecret
-             inputs:
-               action: createSecret
-               kubernetesServiceConnection: 'build-robot'
-               secretName: $(imagePullSecret)
-               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+          #  - task: KubernetesManifest@0
+          #    displayName: Create imagePullSecret
+          #    inputs:
+          #      action: createSecret
+          #      kubernetesServiceConnection: 'build-robot'
+          #      secretName: $(imagePullSecret)
+          #      dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
 
            - task: KubernetesManifest@0
              displayName: Deploy to Kubernetes cluster
