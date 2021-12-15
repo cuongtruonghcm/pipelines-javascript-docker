@@ -11,7 +11,7 @@ variables:
    # Container registry service connection established during pipeline creation
    dockerRegistryServiceConnection: 'dcfcf908-3992-4499-9252-1648af30d467'
    imageRepository: 'cuongtruonghcmpipelinesjavascriptdocker'
-   containerRegistry: 'mycontainerregistry20211215.azurecr.io'
+   containerRegistry: 'mycontainerregistry20211215'
    dockerfilePath: '**/Dockerfile'
    tag: '$(Build.BuildId)'
    imagePullSecret: 'mycontainerregistry202112157106fc5c-auth'
