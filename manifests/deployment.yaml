@@ -17,3 +17,5 @@ spec:
           image: mycontainerregistry20211215.azurecr.io/cuongtruonghcmpipelinesjavascriptdocker
           ports:
           - containerPort: 8080
+      imagePullSecrets:
+        - name: __acr-secret__
