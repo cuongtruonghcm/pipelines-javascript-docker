@@ -49,6 +49,9 @@ stages:
    - deployment: Deploy
      condition: and(succeeded(), not(startsWith(variables['Build.SourceBranch'], 'refs/pull/')))
      displayName: Deploy
+     variables:
+     - name: acr-secret
+       value: $(imagePullSecret)
      environment: 'cuongtruonghcmpipelinesjavascriptdocker'
      strategy:
        runOnce:
