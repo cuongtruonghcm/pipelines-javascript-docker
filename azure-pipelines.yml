@@ -61,8 +61,8 @@ stages:
                command: 'apply'
                useConfigurationFile: true
                configuration: |
-                $(Agent.BuildDirectory)/manifests/deployment.yml
-                $(Agent.BuildDirectory)/manifests/service.yml
+                $(Agent.BuildDirectory)/s/manifests/deployment.yml
+                $(Agent.BuildDirectory)/s/manifests/service.yml
                secretType: 'dockerRegistry'
                containerRegistryType: 'Azure Container Registry'
           #  - task: KubernetesManifest@0
