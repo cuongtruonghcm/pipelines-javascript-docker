@@ -89,8 +89,8 @@ stages:
                action: deploy
                kubernetesServiceConnection: 'build-robot'
                manifests: |
-                 $(Agent.BuildDirectory)/s/manifests/deployment.yml
-                 $(Agent.BuildDirectory)/s/manifests/service.yml
+                 $(Agent.BuildDirectory)/manifests/deployment.yml
+                 $(Agent.BuildDirectory)/manifests/service.yml
                imagePullSecrets: |
                  $(imagePullSecret)
                containers: |
