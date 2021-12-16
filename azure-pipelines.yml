@@ -62,6 +62,15 @@ stages:
                useConfigurationFile: true
                configuration: |
                 $(Agent.BuildDirectory)/s/manifests/deployment.yml
+               secretType: 'dockerRegistry'
+               containerRegistryType: 'Azure Container Registry'
+           - task: Kubernetes@1
+             inputs:
+               connectionType: 'Kubernetes Service Connection'
+               kubernetesServiceEndpoint: 'build-robot'
+               command: 'apply'
+               useConfigurationFile: true
+               configuration: |
                 $(Agent.BuildDirectory)/s/manifests/service.yml
                secretType: 'dockerRegistry'
                containerRegistryType: 'Azure Container Registry'
