@@ -9,9 +9,9 @@ trigger:
 variables:
 
    # Container registry service connection established during pipeline creation
-   dockerRegistryServiceConnection: 'mycontainerregistry20211215'
+   dockerRegistryServiceConnection: 'myContainerRegistryConnection'
    imageRepository: 'cuongtruonghcmpipelinesjavascriptdocker'
-   containerRegistry: 'mycontainerregistry20211215'
+   containerRegistry: 'myContainerRegistryConnection'
    dockerfilePath: '**/Dockerfile'
    tag: '$(Build.BuildId)'
    imagePullSecret: 'mycontainerregistry202112157106fc5c-auth'
@@ -60,7 +60,7 @@ stages:
                action: 'createSecret'
                kubernetesServiceConnection: 'build-robot'
                secretType: 'dockerRegistry'
-               dockerRegistryEndpoint: 'myContainerRegistry20211215'
+               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
                secretName: $(imagePullSecret)
 
            - task: KubernetesManifest@0
