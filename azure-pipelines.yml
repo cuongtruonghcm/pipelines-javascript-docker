@@ -23,19 +23,19 @@ pool:
    - agent.name -equals devops-agent  
 
 stages:
- - stage: Build
-   displayName: Build stage
-   jobs:
-   - job: Build
-     displayName: Build
-     steps:
-     - task: Docker@2
-       displayName: Build and push an image to container registry
-       inputs:
-         command: buildAndPush
-         repository: $(imageRepository)
-         dockerfile: $(dockerfilePath)
-         containerRegistry: $(containerRegistry)
+#  - stage: Build
+#    displayName: Build stage
+#    jobs:
+#    - job: Build
+#      displayName: Build
+#      steps:
+#      - task: Docker@2
+#        displayName: Build and push an image to container registry
+#        inputs:
+#          command: buildAndPush
+#          repository: $(imageRepository)
+#          dockerfile: $(dockerfilePath)
+#          containerRegistry: $(containerRegistry)
 
 
     #  - publish: manifests
