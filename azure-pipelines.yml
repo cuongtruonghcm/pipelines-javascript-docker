@@ -22,7 +22,7 @@ pool:
   demands:
    - agent.name -equals devops-agent  
 
-stages:
+#stages:
 #  - stage: Build
 #    displayName: Build stage
 #    jobs:
@@ -40,7 +40,7 @@ stages:
 
     #  - publish: manifests
     #    artifact: manifests
-
+stages:
  - stage: Deploy
    displayName: Deploy stage
    dependsOn: Build
