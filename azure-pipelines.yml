@@ -91,7 +91,7 @@ stages:
              inputs:
                action: bake
                kubernetesServiceConnection: 'build-robot'
-               helmChart: $(Agent.BuildDirectory)/s/charts/akslab.zip
+               helmChart: $(Agent.BuildDirectory)/s/charts/akslab.tgz
                overrides: |
                   imagePullSecrets.name:$(imagePullSecret)
            - task: KubernetesManifest@0
