@@ -90,13 +90,15 @@ stages:
              name: bake
              inputs:
                action: bake
-               helmChart: $(Pipeline.Workspace)/s/charts/akslab.zip
+               kubernetesServiceConnection: 'build-robot'
+               helmChart: $(Agent.BuildDirectory)/s/charts/akslab.zip
                overrides: |
                   imagePullSecrets.name:$(imagePullSecret)
            - task: KubernetesManifest@0
              displayName: Deploy to Kubernetes cluster
              inputs:
                action: deploy
+               kubernetesServiceConnection: 'build-robot'
                manifests: |
                 $(bake.manifestsBundle)
                imagePullSecrets: |
