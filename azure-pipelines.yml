@@ -90,7 +90,7 @@ stages:
              name: bake
              inputs:
                action: bake
-               helmChart: $(Pipeline.Workspace)/charts/akslab.zip
+               helmChart: $(Pipeline.Workspace)/s/charts/akslab.zip
                overrides: |
                   imagePullSecrets.name:$(imagePullSecret)
            - task: KubernetesManifest@0
